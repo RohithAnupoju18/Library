@@ -1,0 +1,21 @@
+{
+  "name": "university-library",
+  "version": "1.0.0",
+  "description": "University Digital Library Portal",
+  "main": "server/server.js",
+  "scripts": {
+    "start": "node server/server.js",
+    "dev": "node server/server.js"
+  },
+  "keywords": [
+    "library",
+    "university",
+    "express",
+    "education"
+  ],
+  "author": "AI Developer",
+  "license": "MIT",
+  "dependencies": {
+    "express": "^4.19.2"
+  }
+}

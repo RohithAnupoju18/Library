@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Dashboard | University Library</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" />
+    <link rel="stylesheet" href="css/style.css" />
+  </head>
+  <body data-page="dashboard">
+    <div class="topbar">
+      <div class="container topbar-inner">
+        <div>Member Dashboard</div>
+        <div class="topbar-links">
+          <a href="login.html">Sign out</a>
+          <a href="contact.html">Support</a>
+        </div>
+      </div>
+    </div>
+
+    <nav class="navbar">
+      <div class="container nav-wrap">
+        <a href="index.html" class="brand">
+          <div class="brand-mark">U</div>
+          <div class="brand-text">
+            <h3>Annamacharya University Library</h3>
+            <span>Member Portal</span>
+          </div>
+        </a>
+        <button class="menu-toggle">☰</button>
+        <div class="main-nav">
+          <a href="index.html">Home</a>
+          <a href="books.html">Books</a>
+          <a href="resources.html">Resources</a>
+          <a href="dashboard.html">Dashboard</a>
+          <a href="services.html">Services</a>
+          <a href="contact.html">Contact</a>
+        </div>
+        <div class="nav-actions">
+          <a href="login.html" class="btn btn-secondary">Login</a>
+          <a href="signup.html" class="btn btn-primary">Register</a>
+        </div>
+      </div>
+    </nav>
+
+    <header class="page-header">
+      <div class="container">
+        <div class="breadcrumbs">Home / Dashboard</div>
+        <h1>Student & Faculty Dashboard</h1>
+      </div>
+    </header>
+
+    <main class="section">
+      <div class="container dashboard-grid">
+        <aside class="dashboard-panel">
+          <div class="profile-box">
+            <div class="avatar">👤</div>
+            <h3 id="dashboardUserName">Student Member</h3>
+            <p>Department of Computer Science</p>
+          </div>
+          <div class="list-stack" style="margin-top: 18px;">
+            <div class="list-item"><span>Library ID</span><strong>CS-2048</strong></div>
+            <div class="list-item"><span>Membership</span><strong>Active</strong></div>
+            <div class="list-item"><span>Borrow Limit</span><strong>5 Books</strong></div>
+            <div class="list-item"><span>Alerts</span><strong>2 Pending</strong></div>
+          </div>
+        </aside>
+
+        <div class="dashboard-main">
+          <div class="summary-row">
+            <div class="stat-card">
+              <div class="stat-value">3</div>
+              <div>Borrowed Books</div>
+            </div>
+            <div class="stat-card">
+              <div class="stat-value">2</div>
+              <div>Reserved</div>
+            </div>
+            <div class="stat-card">
+              <div class="stat-value">₹150</div>
+              <div>Pending Fine</div>
+            </div>
+            <div class="stat-card">
+              <div class="stat-value">14</div>
+              <div>Reading Hours</div>
+            </div>
+          </div>
+
+          <div class="dashboard-panel">
+            <h3 style="margin-top: 0;">Borrowed Books</h3>
+            <div class="list-stack">
+              <div class="list-item"><span>Artificial Intelligence: A Modern Approach</span><strong>Due: 12 Oct</strong></div>
+              <div class="list-item"><span>Operating System Concepts</span><strong>Due: 18 Oct</strong></div>
+              <div class="list-item"><span>Database System Concepts</span><strong>Due: 25 Oct</strong></div>
+            </div>
+          </div>
+
+          <div class="dashboard-panel">
+            <h3 style="margin-top: 0;">Borrowing History</h3>
+            <div class="list-stack">
+              <div class="list-item"><span>Machine Learning for Everyone</span><strong>Returned</strong></div>
+              <div class="list-item"><span>Computer Networks</span><strong>Returned</strong></div>
+              <div class="list-item"><span>Software Engineering</span><strong>Returned</strong></div>
+            </div>
+          </div>
+
+          <div class="dashboard-panel">
+            <h3 style="margin-top: 0;">Recommended Books</h3>
+            <div class="list-stack">
+              <div class="list-item"><span>Data Science for Engineers</span><strong>Recommend</strong></div>
+              <div class="list-item"><span>Applied Mathematics for Computer Science</span><strong>Recommend</strong></div>
+              <div class="list-item"><span>Introduction to Electronics</span><strong>Recommend</strong></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="container footer-grid">
+        <div>
+          <h4>Annamacharya University Library</h4>
+          <p>Supporting member access and research success with a digital-first academic portal.</p>
+        </div>
+        <div>
+          <h5>Account</h5>
+          <a href="login.html">Login</a>
+          <a href="signup.html">Register</a>
+          <a href="dashboard.html">Dashboard</a>
+        </div>
+        <div>
+          <h5>Resources</h5>
+          <a href="books.html">Book Search</a>
+          <a href="resources.html">Resources</a>
+          <a href="services.html">Services</a>
+        </div>
+        <div>
+          <h5>Contact</h5>
+          <p>library@annamacharyauniversity.edu.in</p>
+          <p>+91 98765 43210</p>
+        </div>
+      </div>
+      <div class="container small-print">© <span id="year"></span> Annamacharya University Library. All rights reserved.</div>
+    </footer>
+
+    <script src="js/main.js"></script>
+    <script src="js/auth.js"></script>
+    <script src="js/chatbot.js"></script>
+  </body>
+</html>

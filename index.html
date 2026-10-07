@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Annamacharya University Library | Home</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" />
+    <link rel="stylesheet" href="css/style.css" />
+  </head>
+  <body data-page="home">
+    <div class="topbar">
+      <div class="container topbar-inner">
+        <div>Welcome to the University Digital Library</div>
+        <div class="topbar-links">
+          <a href="login.html">Student Login</a>
+          <a href="contact.html">Ask Librarian</a>
+        </div>
+      </div>
+    </div>
+
+    <nav class="navbar">
+      <div class="container nav-wrap">
+        <a href="index.html" class="brand" aria-label="University Library home">
+          <div class="brand-mark">U</div>
+          <div class="brand-text">
+            <h3>Annamacharya University Library</h3>
+            <span>Research • Learning • Innovation</span>
+          </div>
+        </a>
+
+        <button class="menu-toggle" aria-label="Toggle Menu">☰</button>
+
+        <div class="main-nav">
+          <a href="index.html">Home</a>
+          <a href="books.html">Books</a>
+          <a href="btech.html">B.Tech Books</a>
+          <a href="resources.html">Resources</a>
+          <a href="dashboard.html">Dashboard</a>
+          <a href="services.html">Services</a>
+          <a href="announcements.html">Announcements</a>
+          <a href="contact.html">Contact</a>
+        </div>
+
+        <div class="nav-actions">
+          <a href="login.html" class="btn btn-secondary">Login</a>
+          <a href="signup.html" class="btn btn-primary">Register</a>
+        </div>
+      </div>
+    </nav>
+
+    <main>
+      <section class="hero">
+        <div class="container hero-grid">
+          <div class="hero-copy">
+            <h1>Discover knowledge for every discipline.</h1>
+            <p>
+              Access a world-class collection of academic books, digital journals, research papers, and institutional resources designed for university learning and discovery.
+            </p>
+            <div class="hero-actions">
+              <a href="books.html" class="btn btn-primary">Explore Collection</a>
+              <a href="btech.html" class="btn btn-secondary">B.Tech Books</a>
+              <a href="resources.html" class="btn btn-secondary">Digital Resources</a>
+            </div>
+
+            <div class="search-panel">
+              <form action="books.html" method="get">
+                <div class="search-row">
+                  <input type="text" name="search" placeholder="Search by title, author, ISBN, subject or keyword" />
+                  <select name="category">
+                    <option value="all">All Categories</option>
+                    <option value="Computer Science">Computer Science</option>
+                    <option value="Artificial Intelligence">Artificial Intelligence</option>
+                    <option value="Data Science">Data Science</option>
+                    <option value="Mathematics">Mathematics</option>
+                    <option value="Physics">Physics</option>
+                    <option value="Electronics">Electronics</option>
+                  </select>
+                  <button type="submit" class="btn btn-primary">Search Library</button>
+                </div>
+              </form>
+            </div>
+          </div>
+
+          <div class="hero-card">
+            <div class="mini-meta">
+              <span>Academic Excellence</span>
+              <span>•</span>
+              <span>24/7 Digital Access</span>
+            </div>
+            <h3 style="font-size: 2rem; margin: 16px 0 8px;">Annamacharya University Library Hub</h3>
+            <p style="color: rgba(255,255,255,0.85);">Trusted by students, faculty, and researchers across engineering, science, humanities, and management.</p>
+
+            <div class="hero-metric">
+              <div>
+                <div class="metric-value">220K+</div>
+                <div class="metric-label">Catalogued titles</div>
+              </div>
+              <div>
+                <div class="metric-value">18K+</div>
+                <div class="metric-label">E-resources</div>
+              </div>
+            </div>
+
+            <div class="hero-metric">
+              <div>
+                <div class="metric-value">92%</div>
+                <div class="metric-label">Satisfaction</div>
+              </div>
+              <div>
+                <div class="metric-value">8 AM</div>
+                <div class="metric-label">Opening Time</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="section">
+        <div class="container">
+          <div class="section-header" style="display: flex; justify-content: space-between; align-items: end; gap: 20px; margin-bottom: 20px;">
+            <div>
+              <h2 class="section-title">Featured Books</h2>
+              <div class="section-caption">Popular academic resources for research and curriculum support.</div>
+            </div>
+            <a href="books.html" class="btn-link">Browse all books →</a>
+          </div>
+          <div id="featuredBooks" class="card-grid"></div>
+        </div>
+      </section>
+
+      <section class="section" style="background: #f1f5fb;">
+        <div class="container">
+          <div class="section-header" style="display: flex; justify-content: space-between; align-items: end; gap: 20px; margin-bottom: 20px;">
+            <div>
+              <h2 class="section-title">Popular Resources</h2>
+              <div class="section-caption">High-demand digital collections and research tools.</div>
+            </div>
+            <a href="resources.html" class="btn-link">View resources →</a>
+          </div>
+          <div id="popularResources" class="card-grid"></div>
+        </div>
+      </section>
+
+      <section class="section">
+        <div class="container">
+          <div class="section-header" style="display: flex; justify-content: space-between; align-items: end; gap: 20px; margin-bottom: 20px;">
+            <div>
+              <h2 class="section-title">New Arrivals</h2>
+              <div class="section-caption">Fresh additions to the campus library collection.</div>
+            </div>
+            <a href="announcements.html" class="btn-link">See announcements →</a>
+          </div>
+          <div id="newArrivals" class="card-grid"></div>
+        </div>
+      </section>
+
+      <section class="banner-strip">
+        <div class="container banner-inner">
+          <div>
+            <h3 style="margin: 0 0 8px;">Need research support?</h3>
+            <p style="margin: 0; color: rgba(255,255,255,0.8);">Our librarians offer research guidance, citation support, and digital resource recommendations.</p>
+          </div>
+          <a href="contact.html" class="btn btn-secondary">Contact Librarian</a>
+        </div>
+      </section>
+
+      <section class="section">
+        <div class="container">
+          <div class="section-header" style="display: flex; justify-content: space-between; align-items: end; gap: 20px; margin-bottom: 20px;">
+            <div>
+              <h2 class="section-title">Library Announcements</h2>
+              <div class="section-caption">Updated notices for students, staff, and researchers.</div>
+            </div>
+          </div>
+
+          <div class="announcement-list">
+            <div class="announcement-box">
+              <h4>Summer research access extended</h4>
+              <p>Off-campus digital resources remain available through the end of the academic term for all registered users.</p>
+            </div>
+            <div class="announcement-box">
+              <h4>Workshop: Effective literature review</h4>
+              <p>Join the library workshop on 18 October from 2:00 PM to 4:00 PM in the reference hall.</p>
+            </div>
+            <div class="announcement-box">
+              <h4>Thesis repository updates</h4>
+              <p>New postgraduate dissertations have been added to the online repository and are available across campus networks.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="section" style="background: #f1f5fb;">
+        <div class="container">
+          <div class="section-header" style="display: flex; justify-content: space-between; align-items: end; gap: 20px; margin-bottom: 20px;">
+            <div>
+              <h2 class="section-title">Quick Links</h2>
+              <div class="section-caption">Essential services and academic resources at a glance.</div>
+            </div>
+          </div>
+          <div class="resource-grid">
+            <div class="resource-card">
+              <div class="icon">📚</div>
+              <h4>Borrowing Desk</h4>
+              <p>Check due dates, renew books, or request help with circulation services.</p>
+            </div>
+            <div class="resource-card">
+              <div class="icon">📖</div>
+              <h4>Research Support</h4>
+              <p>Explore citation guidance, indexing tools, and subject-specific databases.</p>
+            </div>
+            <div class="resource-card">
+              <div class="icon">🕘</div>
+              <h4>Hours & Rules</h4>
+              <p>Access operating hours, library rules, and member responsibilities.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="footer">
+      <div class="container footer-grid">
+        <div>
+          <h4>Annamacharya University Library</h4>
+          <p>Supporting teaching, learning, and research across all disciplines with a comprehensive academic resource environment.</p>
+          <p>Rajampet, Andhra Pradesh, India</p>
+        </div>
+        <div>
+          <h5>Explore</h5>
+          <a href="books.html">Books</a>
+          <a href="resources.html">Resources</a>
+          <a href="dashboard.html">Dashboard</a>
+          <a href="services.html">Services</a>
+        </div>
+        <div>
+          <h5>Support</h5>
+          <a href="rules.html">Library Rules</a>
+          <a href="announcements.html">Announcements</a>
+          <a href="contact.html">Contact</a>
+          <a href="login.html">Login</a>
+        </div>
+        <div>
+          <h5>Opening Hours</h5>
+          <p>Mon–Fri: 8:00 AM – 8:00 PM</p>
+          <p>Saturday: 9:00 AM – 4:00 PM</p>
+          <p>Email: library@annamacharyauniversity.edu.in</p>
+          <p>Phone: +91 98765 43210</p>
+        </div>
+      </div>
+      <div class="container small-print">© <span id="year"></span> Annamacharya University Library. All rights reserved.</div>
+    </footer>
+
+    <script src="js/main.js"></script>
+    <script src="js/books.js"></script>
+    <script src="js/chatbot.js"></script>
+  </body>
+</html>

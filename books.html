@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Book Search | Annamacharya University Library</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" />
+    <link rel="stylesheet" href="css/style.css" />
+  </head>
+  <body data-page="books">
+    <div class="topbar">
+      <div class="container topbar-inner">
+        <div>Annamacharya University Library Catalog</div>
+        <div class="topbar-links">
+          <a href="login.html">Member Login</a>
+          <a href="contact.html">Need help?</a>
+        </div>
+      </div>
+    </div>
+
+    <nav class="navbar">
+      <div class="container nav-wrap">
+        <a href="index.html" class="brand">
+          <div class="brand-mark">U</div>
+          <div class="brand-text">
+            <h3>Annamacharya University Library</h3>
+            <span>Catalog & Resources</span>
+          </div>
+        </a>
+        <button class="menu-toggle">☰</button>
+        <div class="main-nav">
+          <a href="index.html">Home</a>
+          <a href="books.html">Books</a>
+          <a href="btech.html">B.Tech Books</a>
+          <a href="resources.html">Resources</a>
+          <a href="dashboard.html">Dashboard</a>
+          <a href="services.html">Services</a>
+          <a href="announcements.html">Announcements</a>
+          <a href="contact.html">Contact</a>
+        </div>
+        <div class="nav-actions">
+          <a href="login.html" class="btn btn-secondary">Login</a>
+          <a href="signup.html" class="btn btn-primary">Register</a>
+        </div>
+      </div>
+    </nav>
+
+    <header class="page-header">
+      <div class="container">
+        <div class="breadcrumbs">Home / Books / Search Catalog</div>
+        <h1>Search Library Collection</h1>
+      </div>
+    </header>
+
+    <main class="section">
+      <div class="container">
+        <div class="filter-panel">
+          <form id="bookSearchForm">
+            <div class="search-controls">
+              <input id="searchInput" type="text" placeholder="Search by title, author, ISBN, subject, keyword" />
+              <select id="categoryFilter">
+                <option value="all">All Categories</option>
+              </select>
+              <select id="authorFilter">
+                <option value="all">All Authors</option>
+              </select>
+              <select id="yearFilter">
+                <option value="all">All Years</option>
+              </select>
+              <select id="availabilityFilter">
+                <option value="all">All Availability</option>
+                <option value="Available">Available</option>
+                <option value="Checked Out">Checked Out</option>
+              </select>
+            </div>
+          </form>
+        </div>
+
+        <div class="search-results-top">
+          <h3 style="margin: 0; color: var(--primary-dark);">Search Results</h3>
+          <span id="resultsCount">0 results</span>
+        </div>
+
+        <p><a class="btn-link" href="btech.html">Browse B.Tech books and references →</a></p>
+
+        <div id="bookResults" class="book-results"></div>
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="container footer-grid">
+        <div>
+          <h4>Annamacharya University Library</h4>
+          <p>Access academic resources, research materials, and digital collections for campus learning.</p>
+        </div>
+        <div>
+          <h5>Quick Links</h5>
+          <a href="index.html">Home</a>
+          <a href="books.html">Books</a>
+          <a href="resources.html">Resources</a>
+        </div>
+        <div>
+          <h5>Support</h5>
+          <a href="services.html">Services</a>
+          <a href="rules.html">Rules</a>
+          <a href="contact.html">Contact</a>
+        </div>
+        <div>
+          <h5>Library Hours</h5>
+          <p>Mon–Fri: 8:00 AM – 8:00 PM</p>
+          <p>Sat: 9:00 AM – 4:00 PM</p>
+        </div>
+      </div>
+      <div class="container small-print">© <span id="year"></span> Annamacharya University Library. All rights reserved.</div>
+    </footer>
+
+    <script src="js/main.js"></script>
+    <script src="js/books.js"></script>
+    <script src="js/chatbot.js"></script>
+  </body>
+</html>
