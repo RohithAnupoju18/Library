@@ -34,7 +34,7 @@ document.addEventListener('DOMContentLoaded', () => {
       </div>
     </div>
     <div class="chatbot-footer">
-      <input id="chatInput" type="text" placeholder="Ask about books, services, or rules...">
+      <input id="chatInput" type="text" placeholder="Ask me anything...">
       <button id="sendChatBtn" aria-label="Send message">➤</button>
     </div>
   `;
@@ -49,6 +49,7 @@ document.addEventListener('DOMContentLoaded', () => {
   const sendBtn = document.getElementById('sendChatBtn');
   const clearBtn = document.getElementById('clearChatBtn');
   const typingIndicator = document.getElementById('typingIndicator');
+  const conversationHistory = [];
   let dragState = null;
   let suppressNextClick = false;
 
@@ -103,84 +104,22 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   async function getReply(input) {
-    const text = input.toLowerCase();
-
-    const topicKeywords = {
-      'data structures': ['Data Structures and Algorithms in C++', 'Fundamentals of Data Structures in C'],
-      'object oriented programming': ['Object Oriented Programming with C++'],
-      'oop': ['Object Oriented Programming with C++'],
-      'operating system': ['Operating System Concepts'],
-      'dbms': ['Database System Concepts'],
-      'database management system': ['Database System Concepts'],
-      'database systems': ['Database System Concepts'],
-      'database': ['Database System Concepts'],
-      'computer networks': ['Computer Networks'],
-      'artificial intelligence': ['Artificial Intelligence: A Modern Approach', 'Machine Learning for Everyone'],
-      'machine learning': ['Machine Learning for Everyone', 'Data Science for Engineers'],
-      'web technologies': ['Web Technologies: Theory and Practice'],
-      'web development': ['Web Technologies: Theory and Practice'],
-      'compiler design': ['Compiler Design in C'],
-      'compiler': ['Compiler Design in C'],
-      'computer graphics': ['Computer Graphics with OpenGL'],
-      'digital logic': ['Digital Logic and Design'],
-      'electronics': ['Introduction to Electronics', 'Digital Logic and Design'],
-      'mathematics': ['Applied Mathematics for Computer Science'],
-      'physics': ['Fundamentals of Physics']
-    };
-
-    const matchingTopic = Object.keys(topicKeywords).find(topic => text.includes(topic));
-
-    if (matchingTopic) {
-      const suggestions = topicKeywords[matchingTopic].join(', ');
-      const topicName = matchingTopic.charAt(0).toUpperCase() + matchingTopic.slice(1);
-      return `For ${topicName}, I recommend: ${suggestions}. These are strong B.Tech references for theory and practice. For deeper study, focus on: arrays, recursion, complexity analysis, problem-solving patterns, and lab assignments related to the topic.`;
+    const response = await fetch('/api/chat', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ message: input, history: conversationHistory })
+    });
+    const result = await response.json();
+    if (!response.ok || !result.reply) {
+      throw new Error(result.error || 'The local AI assistant is unavailable.');
     }
 
-    if (text.includes('b.tech') || text.includes('btech') || text.includes('engineering') || text.includes('required book')) {
-      return 'For B.Tech students, the best starting references are: Data Structures and Algorithms in C++, Object Oriented Programming with C++, Operating System Concepts, Database System Concepts, Computer Networks, and Web Technologies: Theory and Practice. I can suggest books by specific subject if you tell me your topic.';
-    }
-
-    if (text.includes('artificial intelligence') || text.includes('ai')) {
-      return 'I can suggest resources like Artificial Intelligence: A Modern Approach, Machine Learning for Everyone, and other AI-related books available in the Computer Science section.';
-    }
-
-    if (text.includes('timing') || text.includes('hours') || text.includes('open')) {
-      return 'The library is open Monday to Friday from 8:00 AM to 8:00 PM, Saturday from 9:00 AM to 4:00 PM, and closed on Sundays and public holidays.';
-    }
-
-    if (text.includes('borrow') || text.includes('book can i borrow') || text.includes('books can')) {
-      return 'Students can borrow up to 5 books for 14 days at a time. Faculty members may borrow up to 10 books depending on their category.';
-    }
-
-    if (text.includes('renew') || text.includes('renewal')) {
-      return 'Books can be renewed online through the dashboard or at the circulation desk before the due date, provided no other user has reserved them.';
-    }
-
-    if (text.includes('reserve') || text.includes('reservation')) {
-      return 'To reserve a book, open the book details page and click “Reserve Book.” Reserved books are held for 48 hours for pickup.';
-    }
-
-    if (text.includes('computer science') || text.includes('resources')) {
-      return 'The library has Computer Science resources including database systems, operating systems, software engineering, networking, AI, and data science collections in the digital resources section.';
-    }
-
-    if (text.includes('service') || text.includes('support')) {
-      return 'Library services include borrowing, renewal, reservation, reference assistance, research support, thesis repository access, printing, scanning, and digital library resources.';
-    }
-
-    if (text.includes('contact') || text.includes('email') || text.includes('phone')) {
-      return 'You can contact the library desk at +91 98765 43210 or library@annamacharyauniversity.edu.in for assistance and support.';
-    }
-
-    if (text.includes('hello') || text.includes('hi')) {
-      return 'Hello! I can help you locate B.Tech books, suggest references by subject, answer borrowing rules, and explain library services. What would you like to know?';
-    }
-
-    if (text.includes('faq') || text.includes('fine') || text.includes('late')) {
-      return 'Late returns may incur a nominal fine based on the default delay policy. Please check the dashboard for pending dues and the rules page for the complete fine structure.';
-    }
-
-    return 'I can help with B.Tech book recommendations, subject-specific references, library timings, borrowing rules, renewals, reservations, and basic contact information. Try asking for Data Structures, OOP, DBMS, Computer Networks, or AI.';
+    conversationHistory.push(
+      { role: 'user', content: input },
+      { role: 'assistant', content: result.reply }
+    );
+    if (conversationHistory.length > 12) conversationHistory.splice(0, conversationHistory.length - 12);
+    return result.reply;
   }
 
   async function sendMessage() {
@@ -197,7 +136,7 @@ document.addEventListener('DOMContentLoaded', () => {
       addMessage(reply, 'bot');
     } catch (error) {
       hideTyping();
-      addMessage('I could not find a suitable recommendation right now. Please try a topic like Data Structures, OOP, DBMS, or AI.', 'bot');
+      addMessage(`I couldn't reach the AI service: ${error.message}. Open this app through its Express server and make sure Ollama is running.`, 'bot');
     }
   }
 
@@ -268,7 +207,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
   clearBtn.addEventListener('click', () => {
     chatMessages.innerHTML = '';
-    addMessage('Welcome to the Annamacharya University Library AI Assistant. Ask me about B.Tech books, timings, borrowing rules, or resources.', 'bot');
+    conversationHistory.length = 0;
+    addMessage('Welcome to the Annamacharya University Library AI Assistant. Ask me anything, including library and B.Tech questions.', 'bot');
   });
 
   document.querySelectorAll('.suggestion-chip').forEach(button => {
@@ -278,5 +218,5 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   });
 
-  addMessage('Welcome to the Annamacharya University Library AI Assistant. Ask me about B.Tech books, timings, borrowing rules, or resources.', 'bot');
+  addMessage('Welcome to the Annamacharya University Library AI Assistant. Ask me anything, including library and B.Tech questions.', 'bot');
 });
